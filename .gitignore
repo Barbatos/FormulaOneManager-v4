@@ -1,0 +1,4 @@
+engine/conf/*
+www/index.php
+www/files/cache/*
+www/files/img/*
