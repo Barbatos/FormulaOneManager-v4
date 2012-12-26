@@ -22,7 +22,6 @@
 
 if (!defined('IN_BLD')) exit('Incorrect access attempt.');
 
-session_start();
 session_regenerate_id();
 
 if (!isset($_SESSION['token']))
