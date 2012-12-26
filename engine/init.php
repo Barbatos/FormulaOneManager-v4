@@ -71,7 +71,7 @@ else
 	include_once(ENGINE_ROOT.'conf/local.php');
 	
 //Bld::$db = new DB($Bld['db']['host'], $Bld['db']['ident'], $Bld['db']['pwd'], $Bld['db']['base']);
-Bld::$db = new PDO('mysql:host='.$Bld['db']['host'].';dbname='.$Bld['db']['base'], $Bld['db']['ident'], $Bld['db']['pwd']);
+Bld::$db = new PDO('mysql:host='.$Bld['db']['host'].';port='.$Bld['db']['port'].';dbname='.$Bld['db']['base'], $Bld['db']['ident'], $Bld['db']['pwd']);
 if(!Bld::$db)
 	exit('PDO connection failed.');
 	
