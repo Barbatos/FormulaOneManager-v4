@@ -1,3 +1,5 @@
+SetEnv PHP_VER 5_4
+
 Options +FollowSymlinks -indexes
 
 # Optimisation des requêtes http
