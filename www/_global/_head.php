@@ -80,14 +80,25 @@
 		
 		<div id="speedBar">
 			<div id="speedLinks">
-				<div id="link"><a href="/" id="home">Accueil</a></div>
-				<div id="link"><a href="/news">News</a></div>
-				<div id="link"><a href="/players/register">Inscription</a></div>
-				<div id="link"><a href="/players/login">Connexion</a></div>
+				<div id="link"><a href="/" id="home"><?= l('Home') ?></a></div>
+				<div id="link"><a href="/news"><?= l('News') ?></a></div>
+				<?php 
+				if(!$user->isLogged()):
+				?>
+				<div id="link"><a href="/players/register"><?= l('Registration') ?></a></div>
+				<div id="link"><a href="/players/login"><?= l('Connection') ?></a></div>
+				<?php
+				else:
+				?>
+
+				<?php
+				endif;
+				?>	
+				<div id="link"><a href="/leagues"><?= l('Leagues') ?></a></div>
 			</div>
 		</div>
 		
-		<div id="infoBar"></div>
+		<!--<div id="infoBar"></div>-->
 	
 	
 		<div id="corps">
@@ -95,7 +106,7 @@
 			<div id="filAriane">
 				<div id="container">
 					<div id="text">
-						<strong>Formula One Manager</strong> -> Accueil -> News
+						<strong><?= l('Formula One Manager') ?></strong> <?= $Bld['site']['filAriane'] ?>
 					</div>
 					<div id="fleche"></div>
 				</div>
@@ -103,37 +114,16 @@
 			
 			<div id="mid">
 		
-	
-		<!--<div class="navbar navbar-fixed-top">
-		  <div class="navbar-inner">
-			<div class="container">
-			  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </a>
-			  <a class="brand" href="#">Formula One Manager</a>
-			  <div class="nav-collapse">
-				<ul class="nav">
-				  <li class="active"><a href="/">Home</a></li>
-				  <li><a href="/players/register">Register</a></li>
-				  <li><a href="/players/login">Log in</a></li>
-				</ul>
-			  </div>
-			</div>
-		  </div>
-		</div>-->
+			<?php
+			if(!empty($_SESSION['error']['e'])):
+				echo msg($_SESSION['error']['e'], true);
+				$_SESSION['error'] = array();
+			endif;
+			
+			if(!empty($_SESSION['message']['m'])):
+				echo msg($_SESSION['message']['m'], false);
+				$_SESSION['message'] = array();
+			endif;
+			?>
 		
-		<?php
-		if(!empty($_SESSION['error']['e'])):
-			echo msg($_SESSION['error']['e'], true);
-			$_SESSION['error'] = array();
-		endif;
 		
-		if(!empty($_SESSION['message']['m'])):
-			echo msg($_SESSION['message']['m'], false);
-			$_SESSION['message'] = array();
-		endif;
-		?>
-	
-	
