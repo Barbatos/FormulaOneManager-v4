@@ -74,6 +74,9 @@ Bld::$db = new PDO('mysql:host='.$Bld['db']['host'].';port='.$Bld['db']['port'].
 if(!Bld::$db)
 	exit('PDO connection failed.');
 	
+// print PDO errors
+Bld::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 unset($Bld['db']);
 
 /* Langs */
@@ -84,4 +87,3 @@ if(!$L_msg)
 $Bld['config_time'] = number_format(microtime(true) - $Bld['microtime'], 4);
 
 $user = new User($Bld);
-
